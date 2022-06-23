@@ -2,20 +2,16 @@
 
 @section('content')
 <h1 style="font-size: 50; text-align: center;">HH!</h1>
+<a href="/recipe/create">Add new recipe</a>
 
 @if($recipes->count())
-    <div class="main-grid">
+    <div class="container-recipes">
         @foreach($recipes as $recipe)
-        <div class="main-grid-item">
-            <div class="main-grid-item-title">
-                <b>{{ $recipe->title }}</b>
-            </div>
-            <div class="main-grid-item-description">
-                {{ $recipe->description }}
-            </div>
-            <div class="main-grid-item-prepTime">
-                {{ $recipe->prepTime }}
-            </div>
+        <div class="container-item">
+            <img src="/storage/{{ $recipe->photo }}" class="w-50" class="recipe-photo">
+            <b>{{ $recipe->title }}</b><br>
+            {{ $recipe->description }}
+            {{ $recipe->prepTime }}                
         </div>
         @endforeach
     </div>

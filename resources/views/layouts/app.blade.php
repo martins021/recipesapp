@@ -28,48 +28,18 @@ body{
 h1{
     color: blueviolet;
 }
-.main-grid {
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  padding: 10px;
-  gap: 10px 10px;
+.container-recipes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px 30px;
 }
-
-.main-grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  padding: 5px;
-  font-size: 30px;
-  text-align: center;
-}
-
-.main-grid-item-title{
-    font-size: 25px;
-    background-color: #FF9595;
-    position: relative;
-    margin-left: 50%;
-    border-radius: 10px;
-}
-
-.main-grid-item-description{
-    font-size: 20px;
-    background-color: #FFBDBD;
-    position: relative;
-    top: 5px;
-    margin-left: 50%;
-    margin-bottom: 5px;
-    border-radius: 10px;
-}
-
-.main-grid-item-prepTime{
-    font-size: 20px;
+.container-item {
+    width: 300px;
+    margin: 10px;
     border: 1px solid black;
-    position: relative;
-    top: 5px;
-    margin-left: 90%;
-    margin-bottom: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 </style>    
 

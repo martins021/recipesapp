@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index', 'show'])->name('home');
+Route::get('/recipe/create', [App\Http\Controllers\RecipesController::class, 'create']); // forma, lai izveidotu jaunu recepti
+Route::post('/r', [App\Http\Controllers\RecipesController::class, 'store']); // saglabā receptes datus datubāzē

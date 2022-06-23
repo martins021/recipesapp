@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\User; // pievienots
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -26,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('recipes_add', function(User $user){
+            return $user->isAdmin; // atgriež true, ja lietotājs ir Admin
+        });
     }
 }
