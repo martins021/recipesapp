@@ -30,5 +30,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('recipes_add', function(User $user){
             return $user->isAdmin; // atgriež true, ja lietotājs ir Admin
         });
+        Gate::define('recipes_edit', function(User $user){
+            return $user->isAdmin; // atgriež true, ja lietotājs ir Admin
+        });
+        Gate::define('recipes_delete', function(User $user){
+            return $user->isAdmin; // atgriež true, ja lietotājs ir Admin
+        });
     }
 }

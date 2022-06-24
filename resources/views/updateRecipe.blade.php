@@ -2,12 +2,13 @@
 
 @section('content')
 <div class="container">
-    <form action="/r" enctype="multipart/form-data" method="post">
+    <form action="/recipe/{{$recipe->id}}/update" enctype="multipart/form-data" method="post">
         @csrf
+        @method('PATCH')
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="row">
-                    <h1>Create new recipe</h1>
+                    <h1>Edit recipe</h1>
                 </div>
 
                 <div class="row mb-3">
@@ -17,8 +18,9 @@
                         type="text"
                         class="form-control @error('title') is-invalid @enderror"
                         name="title" 
-                        value="{{ old('title') }}" 
-                        autocomplete="title" autofocus> <!-- old('title') nozīmē, ja ir input kļūda, tad rakstot vēlreiz iepriekš ierakstītais saglabāsies -->
+                        value="{{ old('title') ?? $recipe->title }}" 
+                        placeholder="{{$recipe->title}}"
+                        autocomplete="title" autofocus>
 
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -33,7 +35,8 @@
                     <textarea id="description"
                         name="description" 
                         rows="4" cols="50" 
-                        class="form-control @error('description') is-invalid @enderror">{{ old('description') }}
+                        placeholder="{{$recipe->description}}"
+                        class="form-control @error('description') is-invalid @enderror">{{ $recipe->description }}
                     </textarea>
                         
                     @error('description')
@@ -50,7 +53,8 @@
                         type="text"
                         class="form-control @error('ingredients') is-invalid @enderror"
                         name="ingredients" 
-                        value="{{ old('ingredients') }}" 
+                        value="{{ old('ingredients') ?? $recipe->ingredients}}" 
+                        placeholder="{{$recipe->ingredients}}"
                         autocomplete="ingredients" autofocus>
 
                     @error('ingredients')
@@ -67,7 +71,8 @@
                         type="number"
                         class="form-control @error('prepTime') is-invalid @enderror"
                         name="prepTime" 
-                        value="{{ old('prepTime') }}" 
+                        value="{{ old('prepTime') ?? $recipe->prepTime}}" 
+                        placeholder="{{$recipe->prepTime}}"
                         autocomplete="prepTime" autofocus>
 
                     @error('prepTime')
@@ -84,7 +89,8 @@
                         type="text"
                         class="form-control @error('category') is-invalid @enderror"
                         name="category" 
-                        value="{{ old('category') }}" 
+                        value="{{ old('category') ?? $recipe->category}}" 
+                        placeholder="{{$recipe->category}}"
                         autocomplete="category" autofocus>
 
                     @error('category')
@@ -96,14 +102,14 @@
 
             </div>
                 <div class="row col-8 offset-2">
-                        <label for="photo" class="col-md-4 col-form-label">Upload image</label>
+                        <label for="photo" class="col-md-4 col-form-label">Change image</label>
                         <input type="file" class="form-control-file" id="photo" name="photo">
                         @error('photo')
                                 <strong>{{ $message }}</strong>
                         @enderror
                 </div>  
         </div><br>
-        <button class="btn btn-primary p-2 col-8 offset-2">Upload recipe</button>
+        <button class="btn btn-primary p-2 col-8 offset-2">Save recipe</button>
     </form>
 </div>
 @endsection

@@ -28,7 +28,7 @@ class RecipesController extends Controller
  
         $imagePath = request('photo')->store('uploads', 'public');// tiek saglabats image path jeb cels kur atrodas image // image tiek saglabats upload mape
         
-        $fill = DB::table('recipes')->insertGetId(array(
+        DB::table('recipes')->insertGetId(array(
             'title' => $data['title'],
             'description' => $data['description'],
             'ingredients' => $data['ingredients'],
@@ -38,5 +38,36 @@ class RecipesController extends Controller
         ));
 
         return redirect('/home');
+    }
+
+    public function edit(Recipe $recipe){
+        return view('updateRecipe',compact('recipe'));
+    }
+
+    public function update(Recipe $recipe){
+        $data = request()->validate([ // pārbauda ievadītos datus
+            'title' => 'required',
+            'description' => 'required',
+            'ingredients' => 'required',
+            'prepTime' => 'required|integer|between:1,1440',
+            'category' => 'required',
+            'photo' => '',
+        ]);
+        if(request('photo')){ // ja ir pievienots jauns foto, tad iegūst imagePath
+            $imagePath = request('photo')->store('uploads', 'public');
+            
+            $recipe->update(array_merge( // ievada datus
+                $data,
+                ['photo' => $imagePath]
+            ));
+        } else {
+            $recipe->update($data);
+        }
+        return redirect("/home");
+    }
+
+    public function destroy($id){ // lai izdzēstu recepti
+        Recipe::findOrFail($id)->delete(); return
+        redirect('/home');
     }
 }

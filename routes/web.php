@@ -21,4 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index', 'show'])->name('home');
 Route::get('/recipe/create', [App\Http\Controllers\RecipesController::class, 'create']); // forma, lai izveidotu jaunu recepti
+Route::get('/recipe/{recipe}/edit', [App\Http\Controllers\RecipesController::class, 'edit']);
+Route::patch('/recipe/{recipe}/update', [App\Http\Controllers\RecipesController::class, 'update']);
+Route::get('/recipe/delete/{id}', [App\Http\Controllers\RecipesController::class, 'destroy']);
 Route::post('/r', [App\Http\Controllers\RecipesController::class, 'store']); // saglabā receptes datus datubāzē
