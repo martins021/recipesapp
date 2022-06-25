@@ -25,3 +25,6 @@ Route::get('/recipe/{recipe}/edit', [App\Http\Controllers\RecipesController::cla
 Route::patch('/recipe/{recipe}/update', [App\Http\Controllers\RecipesController::class, 'update']);
 Route::get('/recipe/delete/{id}', [App\Http\Controllers\RecipesController::class, 'destroy']);
 Route::post('/r', [App\Http\Controllers\RecipesController::class, 'store']); // saglabā receptes datus datubāzē
+
+Route::get('/category/create', [App\Http\Controllers\CategoryController::class, 'create']);
+Route::post('/c', [App\Http\Controllers\CategoryController::class, 'store']); // saglabā receptes datus datubāzē

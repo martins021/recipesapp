@@ -3,7 +3,8 @@
 @section('content')
 <h1 style="font-size: 50; text-align: center;">HH!</h1>
 @can('recipes_add')
-    <a href="/recipe/create">Add new recipe</a>
+    <a href="/recipe/create">Add new recipe </a>&nbsp&nbsp&nbsp
+    <a href="/category/create"> Create new category</a>
 @endcan
 
 @if($recipes->count())
