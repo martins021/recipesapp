@@ -14,12 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('category_recipe', function (Blueprint $table) {
+        Schema::create('recipe_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('recipe_id')->constrained()
                   ->onDelete('cascade'); //starptabula ar diviem FK //foreign key uz recipe tabulu
-            $table->foreignId('category_id')->constrained()
-                  ->onDelete('cascade'); //foreign key uz category tabulu
+            $table->foreignId('user_id')->constrained()
+                  ->onDelete('cascade'); //foreign key uz user tabulu
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_recipe');
+        Schema::dropIfExists('recipe_user');
     }
 };

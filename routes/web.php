@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index', 'show'])->name('home');
+
 Route::get('/recipe/create', [App\Http\Controllers\RecipesController::class, 'create']); // forma, lai izveidotu jaunu recepti
 Route::get('/recipe/{recipe}/edit', [App\Http\Controllers\RecipesController::class, 'edit']);
 Route::patch('/recipe/{recipe}/update', [App\Http\Controllers\RecipesController::class, 'update']);
@@ -28,3 +29,5 @@ Route::post('/r', [App\Http\Controllers\RecipesController::class, 'store']); // 
 
 Route::get('/category/create', [App\Http\Controllers\CategoryController::class, 'create']);
 Route::post('/c', [App\Http\Controllers\CategoryController::class, 'store']); // saglabā receptes datus datubāzē
+
+Route::get('/recipe/like/{id}', [App\Http\Controllers\LikesController::class, 'store']); // registrē like

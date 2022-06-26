@@ -41,7 +41,7 @@ class RecipesController extends Controller
             'prepTime' => $data['prepTime'],
         ));        
 
-        $recipe_id = Recipe::orderBy('id', 'desc')->first(); // iegūst tikko izveidotās receptes id
+        $recipe_id = Recipe::orderBy('id', 'desc')->first(); // iegūst tikko izveidotās receptes objektu
         $recipe_id->categories()->attach($data['category']); // aizpilda many-to-many starptabulu
 
         return redirect('/home');
@@ -84,7 +84,7 @@ class RecipesController extends Controller
     }
 
     public function destroy($id){ // lai izdzēstu recepti
-        Recipe::findOrFail($id)->delete(); return
-        redirect('/home');
+        Recipe::findOrFail($id)->delete(); 
+        return redirect('/home');
     }
 }

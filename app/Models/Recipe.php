@@ -11,11 +11,11 @@ class Recipe extends Model
 
     protected $guarded = [];
 
-    public function likes(){ // one-to-many relationship ar Likes tabulu
-        return $this->hasMany(Recipe::class)->orderBy('created_at','DESC');
-    }
-
     public function categories(){ // one-to-many relationship ar Categories tabulu
         return $this->belongsToMany(Category::class);
+    }
+
+    public function likedBy(){ // many-to-many relationship ar Users tabulu
+        return $this->belongsToMany(User::class);
     }
 }

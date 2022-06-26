@@ -27,14 +27,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('recipes_add', function(User $user){
+        Gate::define('isAdmin', function(User $user){
             return $user->isAdmin; // atgriež true, ja lietotājs ir Admin
         });
-        Gate::define('recipes_edit', function(User $user){
-            return $user->isAdmin; // atgriež true, ja lietotājs ir Admin
-        });
-        Gate::define('recipes_delete', function(User $user){
-            return $user->isAdmin; // atgriež true, ja lietotājs ir Admin
+        Gate::define('isLoggedIn', function(){
+            return auth()->user(); // atgriež true, ja lietotājs ir logged in
         });
     }
 }

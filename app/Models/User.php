@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Ui\Presets\React;
 
 class User extends Authenticatable
 {
@@ -42,7 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function likes(){  // one-to-many relationship ar Likes tabulu
+    public function comments(){  // one-to-many relationship ar Comments tabulu
         return $this->hasMany(User::class)->orderBy('created_at','DESC');
+    }
+
+    public function likes(){ // many-to-many relationship ar Recipes tabulu
+        return $this->belongsToMany(Recipe::class);
     }
 }
