@@ -13,7 +13,7 @@
     <p>{{$recipe->ingredients}}</p>
     <h3><strong>Categories</strong></h3>
     @foreach ($recipe->categories as $category)
-        <span>{{$category->categoryName}}</span>
+        <span class="show-categories">{{$category->categoryName}}</span>
     @endforeach
 </div>
 <div class="comment-container">
@@ -39,15 +39,15 @@
                 <button type="submit" class="btn btn-primary">Publish</button>
             </form>
         </div>
+    @endcan    
         <div class="comments-container">
             <div class="comments-item">
                 @foreach ($comments as $comment)
-                    <p>{{ $comment->content }}</p>
-                    {{ $comment->created_at }}
-                    {{ auth()->user($comment->user_id)->name }}
+                    @if ($comment->recipe_id == $recipe->id)
+                        <p>{{ $comment->content }}</p>
+                    @endif
                 @endforeach
             </div>
         </div>
-    @endcan
 </div>
 @endsection

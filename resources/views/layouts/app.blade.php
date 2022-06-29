@@ -48,7 +48,7 @@ h1{
     grid-template-rows: 25% 25% 25% 25%;
     width: 400px;
     height: 200px;
-    border: 1px solid black;
+    border: 1px solid blueviolet;
     border-radius: 5px;
     cursor: pointer;
     gap: 3px;
@@ -56,7 +56,7 @@ h1{
     transition: all .4s ease;
 }
 .container-item:hover {
-    box-shadow: 5px 5px 10px rgb(0, 0, 0, .3);
+    box-shadow: 5px 5px 10px rgb(138, 43, 226, .3);
     color: black;
     -webkit-transform: scale(1.02);
     -ms-transform: scale(1.02);
@@ -147,10 +147,13 @@ h1{
     padding-right: 15px;
     font-size: 17px;
 }
-.show-container > span{
-    padding-left: 15px;
-    padding-right: 15px;
+.show-categories{
+    margin-left: 15px;
+    margin-right: 15px;
     font-size: 17px;
+    padding: 5px;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
 }
 .comment-container{
     border: 1px solid black;

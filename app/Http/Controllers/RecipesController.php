@@ -28,11 +28,10 @@ class RecipesController extends Controller
             'ingredients' => 'required',
             'prepTime' => 'required|integer|between:1,1440',
             'category' => 'required',
-            'photo' => 'required|image', // attelam ir jabut tiesaam attelam
+            'photo' => 'image', // attelam ir jabut tiesaam attelam
         ]);
-        
+
         $imagePath = request('photo')->store('uploads', 'public');// tiek saglabats image path jeb cels kur atrodas image // image tiek saglabats upload mape
-        
         DB::table('recipes')->insertGetId(array(
             'title' => $data['title'],
             'description' => $data['description'],
@@ -62,7 +61,7 @@ class RecipesController extends Controller
             'description' => 'required',
             'ingredients' => 'required',
             'prepTime' => 'required|integer|between:1,1440',
-            'photo' => '',
+            'photo' => 'image',
         ]);
 
         $categoryData = request()->validate([ // kategoriju pārbauda atsevišķi

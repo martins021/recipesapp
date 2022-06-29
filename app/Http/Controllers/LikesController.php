@@ -14,9 +14,9 @@ class LikesController extends Controller
         $userObj = User::find($userID);
 
         if($userObj->likes()->detach($recipeID)){ // ja ir ielaikots tad noņem laiku
-            $userObj->likes()->detach($recipeID);
+           $userObj->likes()->detach($recipeID);
         }else{
-            $userObj->likes()->attach($recipeID); // citādāk pievieno laiku
+           $userObj->likes()->attach($recipeID); // citādāk pievieno laiku
         };
         return redirect('/home');
     }
