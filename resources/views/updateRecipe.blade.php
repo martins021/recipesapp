@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<title>Update</title>
 <div class="container">
     <form action="/recipe/{{$recipe->id}}/update" enctype="multipart/form-data" method="post">
         @csrf
@@ -106,7 +107,7 @@
                         @enderror
                 </div>  
         </div><br>
-        <button class="btn btn-primary p-2 col-8 offset-2">Save recipe</button>
+        <button type="submit" class="btn btn-primary p-2 col-8 offset-2">Save recipe</button>
     </form>
 </div>
 @endsection

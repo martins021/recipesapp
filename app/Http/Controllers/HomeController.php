@@ -21,7 +21,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     function index(){
-        $likes = Recipe::withCount('likedBy')->get();
+        $likes = Recipe::withCount('likedBy')->get(); // iegust laikotās receptes
         $recipes = Recipe::all();
         return view("home", [
             'recipes' => $recipes,

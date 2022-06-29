@@ -10,6 +10,6 @@ class Comment extends Model
     use HasFactory;
 
     public function user(){ // one-to-many relationship ar Users tabulu
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->orderBy('created_at','DESC');;
     }
 }

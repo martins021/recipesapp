@@ -20,4 +20,5 @@ class CategoryController extends Controller
         Category::firstOrCreate(['categoryName' => $data['categoryName']]); // tiek izveidota jauna kategorija tikai tad, ja tāda vēl neeksistē
         return redirect('/home');
     }
+    
 }

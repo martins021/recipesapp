@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<title>Create category</title>
 <div class="container">
     <form action="/c" enctype="multipart/form-data" method="post">
         @csrf

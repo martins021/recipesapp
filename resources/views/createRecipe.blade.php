@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<title>Create recipe</title>
 <div class="container">
     <form action="/r" enctype="multipart/form-data" method="post">
         @csrf
