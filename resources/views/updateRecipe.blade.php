@@ -85,7 +85,7 @@
 
                 <div class="row mb-3">
                     <label for="category" class="col-md-4 col-form-label">Category</label>
-                        <select name="category[]" id="category" class="form-control @error('prepTime') is-invalid @enderror" multiple="multiple" size="5">
+                        <select name="category[]" id="category" class="form-control @error('category') is-invalid @enderror" multiple="multiple" size="5">
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}"> {{ $category->categoryName }}</option>
                         @endforeach
@@ -107,7 +107,7 @@
                         @enderror
                 </div>  
         </div><br>
-        <button type="submit" class="btn btn-primary p-2 col-8 offset-2">Save recipe</button>
+        <button class="btn btn-primary p-2 col-8 offset-2">Save recipe</button>
     </form>
 </div>
 @endsection

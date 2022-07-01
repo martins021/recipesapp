@@ -28,4 +28,16 @@ class HomeController extends Controller
             'likes' => $likes,
         ]);
     }
+    
+    public function filter(Request $request){
+        $likes = Recipe::withCount('likedBy')->get();
+        $filteredRecipes = Recipe::where('title','LIKE', '%'.$request->title.'%')
+                            ->where('prepTime','LIKE', '%'.$request->prepTime.'%')
+                            ->where('ingredients','LIKE', '%'.$request->ingredients.'%')
+                            ->get();
+        return view('homeFilter', [
+            'filteredRecipes' => $filteredRecipes,
+            'likes' => $likes,
+        ]);
+    }
 }

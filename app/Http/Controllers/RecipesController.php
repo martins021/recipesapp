@@ -28,10 +28,11 @@ class RecipesController extends Controller
             'ingredients' => 'required',
             'prepTime' => 'required|integer|between:1,1440',
             'category' => 'required',
-            'photo' => 'image', // attelam ir jabut tiesaam attelam
+            'photo' => 'required|image', // attelam ir jabut tiesaam attelam
         ]);
 
         $imagePath = request('photo')->store('uploads', 'public');// tiek saglabats image path jeb cels kur atrodas image // image tiek saglabats upload mape
+        
         DB::table('recipes')->insertGetId(array(
             'title' => $data['title'],
             'description' => $data['description'],
@@ -63,11 +64,11 @@ class RecipesController extends Controller
             'prepTime' => 'required|integer|between:1,1440',
             'photo' => 'image',
         ]);
-
+        
         $categoryData = request()->validate([ // kategoriju pārbauda atsevišķi
             'category' => 'required',
         ]);
-
+        //dd($categoryData);
         $recipe->categories()->sync($categoryData['category']); // ievieto datus starptabulā // sync() izdzēš visus iepriekšējos datus ar tādu id un atstāj tikai jaunos
 
         if(request('photo')){ // ja ir pievienots jauns foto, tad iegūst imagePath

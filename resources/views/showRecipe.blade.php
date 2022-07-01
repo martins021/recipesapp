@@ -15,6 +15,13 @@
     @foreach ($recipe->categories as $category)
         <span class="show-categories">{{$category->categoryName}}</span>
     @endforeach
+    <div class="show-likes">
+        @foreach ($likes as $like)
+            @if ($like->id == $recipe->id )
+                {{ $like->liked_by_count }} likes
+            @endif
+        @endforeach 
+    </div>
 </div>
 <div class="comment-container">
     <h3><strong>Comments</strong></h3>
@@ -42,11 +49,21 @@
     @endcan    
         <div class="comments-container">
             <div class="comments-item">
-                @foreach ($comments as $comment)
+                @forelse ($comments as $comment)
                     @if ($comment->recipe_id == $recipe->id)
-                        <p>{{ $comment->content }}</p>
+                        @foreach ($users as $user)
+                            @if ($user->id == $comment->user_id)
+                                <div class="comment-title">
+                                    <h5 class="comment-info">{{ $user->name }}</h5>
+                                    <p>at {{ $comment->created_at }}</p>
+                                </div>
+                                <p>{{ $comment->content }} šī komenta id ir {{ $comment->id }}</p>
+                            @endif
+                        @endforeach
                     @endif
-                @endforeach
+                @empty
+                    <p>There are currently no comments</p>
+                @endforelse
             </div>
         </div>
 </div>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Models\Comment;
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Support\Facades\DB; // pievienots
 
 class CommentsController extends Controller
@@ -13,10 +14,14 @@ class CommentsController extends Controller
         $recipe = Recipe::find($id);
         $categories = Recipe::with('categories')->get();
         $comments = Comment::all();
+        $users = User::all();
+        $likes = Recipe::withCount('likedBy')->get();
         return view('showRecipe', [
             'recipe' => $recipe,
             'categories' => $categories,
             'comments' => $comments,
+            'users' => $users,
+            'likes' => $likes,
         ]);
     }
 

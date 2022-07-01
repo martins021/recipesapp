@@ -18,6 +18,7 @@
     <link href="/css/welcome.css">
 
 <style>
+    
 body{
     padding-right: 15%;
     padding-left: 15%;
@@ -33,7 +34,78 @@ h1{
     background-color: white;
     padding-top: 20px;
     padding-bottom: 20px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.welcome-background{
+    background-image: url("https://wallpaperaccess.com/full/1412206.jpg");
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    min-height: 85vh;
+    background-size: cover;    
+    position: relative;
+}
+.welcome-div{
+    text-align: center;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0.2);
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 3px;
+}
+.welcome-div h1{
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center;
+    color: white;
+    padding: 5px;
+}
+.welcome-div a{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    transition: .4s ease-out;
+}
+.welcome-div a:hover{
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    background: rgb(0, 0, 0);
+    border-radius: 3px;
+    transition: .4s ease-in;
+}
+.search{
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+}
+.search-form{
+    text-align: center;
+}
+input[type=text]{
+    padding: 5px;
+    display: inline-block;
+    border: 1px solid blueviolet;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit]{
+    padding: 5px;
+    border: 1px solid blueviolet;
+    display: inline-block;
+    background: blueviolet;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .container-recipes {
   display: flex;
@@ -137,6 +209,8 @@ h1{
 }
 .show-container > img{
     border-radius: 15px;
+    max-height: 600px;
+    object-fit: cover;
 }
 .show-container > h3{
     padding-left: 15px;
@@ -146,6 +220,12 @@ h1{
     padding-left: 15px;
     padding-right: 15px;
     font-size: 17px;
+}
+.show-likes{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    color: red;
 }
 .show-categories{
     margin-left: 15px;
@@ -163,6 +243,17 @@ h1{
 }
 .write-comment{
     padding-bottom: 20px;
+}
+.comment-title{
+    width: 100%;
+}
+.comment-info{
+    float: left;
+    margin-right: 5px;
+    background: blueviolet;
+    padding: 2px;
+    color: white;
+    border-radius: 5px;
 }
 </style>    
 

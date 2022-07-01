@@ -39,9 +39,9 @@
         </form><br><br><br>
     @endcan
 
-    @if($recipes->count())
+    @if($filteredRecipes->count())
         <div class="container-recipes">
-            @foreach($recipes as $recipe)
+            @foreach($filteredRecipes as $recipe)
                 <a href="/recipe/{{ $recipe->id }}/show">
                     <div class="container-item">
 

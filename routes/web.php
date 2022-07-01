@@ -34,3 +34,5 @@ Route::get('/recipe/like/{id}', [App\Http\Controllers\LikesController::class, 's
 
 Route::get('/recipe/{recipe}/show', [App\Http\Controllers\CommentsController::class, 'showRecipe']);
 Route::post('/w/{recipe}', [App\Http\Controllers\CommentsController::class, 'store']); // saglabā komentāru
+
+Route::get('home/filter', [App\Http\Controllers\HomeController::class, 'filter']);
