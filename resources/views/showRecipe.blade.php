@@ -57,7 +57,7 @@
                                     <h5 class="comment-info">{{ $user->name }}</h5>
                                     <p>at {{ $comment->created_at }}</p>
                                 </div>
-                                <p>{{ $comment->content }} šī komenta id ir {{ $comment->id }}</p>
+                                <p>{{ $comment->content }}</p>
                             @endif
                         @endforeach
                     @endif
