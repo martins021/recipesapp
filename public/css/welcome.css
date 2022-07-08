@@ -1,0 +1,62 @@
+body{
+    padding-right: 15%;
+    padding-left: 15%;
+}
+a {
+  text-decoration: none; /* no underline */
+  color: inherit;
+}
+h1{
+    color: blueviolet;
+}
+.background{
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.welcome-background{
+    background-image: url("https://wallpaperaccess.com/full/1412206.jpg");
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    min-height: 85vh;
+    background-size: cover;    
+    position: relative;
+}
+.welcome-div{
+    text-align: center;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0.2);
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 3px;
+}
+.welcome-div h1{
+    font-weight: bold;
+    font-size: 95px;
+    text-align: center;
+    color: white;
+    padding: 5px;
+}
+.welcome-div a{
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+    transition: .4s ease-out;
+}
+.welcome-div a:hover{
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    background: rgb(0, 0, 0);
+    border-radius: 3px;
+    transition: .4s ease-in;
+}
