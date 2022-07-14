@@ -1,27 +1,57 @@
 @extends('layouts.app')
 
 @section('content')
+
 <title>Explore</title>
-<div class="search">
+
+
+<button class="open-search">
+    Filter
+</button>
+<div class="search-filter">
+    {{-- FILTER --}}
     <div class="search-form">
         <h3 style="color: blueviolet">Filter recipes</h3>
         <form method="GET" action="{{ url('home/filter/') }}">
             @csrf
-            <tr>
-                <td>
-                    <input type="text" placeholder="Title" name="title" id="title">
-                </td>
-                <td>
-                    <input type="text" placeholder="Time" name="prepTime" id="time">
-                </td>
-                <td>
-                    <input type="text" placeholder="Ingredients" name="ingredients" id="ingredients">
-                </td>
-            </tr>
+            <input type="text" placeholder="Title" name="title" id="title">
+            <input type="text" placeholder="Time" name="prepTime" id="time">
+            <input type="text" placeholder="Ingredients" name="ingredients" id="ingredients">
+            <select name="category" id="category" aria-placeholder="Category"> 
+                <option value="" disabled selected hidden>Category</option>
+                <option value=" "></option>            
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}"> {{ $category->categoryName }}</option>
+                @endforeach
+            </select>
             <input type="submit" value="Filter">
         </form>
     </div>
+
+    {{-- SHOW FILTER TAGS --}}
+    @if ($titleQuery != null || $prepTimeQuery != null || $ingredientsQuery != null || $categoryQuery != null)
+        <div class="filters">
+            <h4>Filters:</h4>
+            <div class="queries">
+                @if ($titleQuery != null)
+                    <p>Title: <span id="queryVariable">{{ $titleQuery }}</span></p>
+                @endif
+                @if ($prepTimeQuery != null)
+                    <p>Time: <span id="queryVariable">{{ $prepTimeQuery }}</span></p>
+                @endif
+                @if ($ingredientsQuery != null)
+                    <p>Ingredients: <span id="queryVariable">{{ $ingredientsQuery }}</span></p>
+                @endif
+                @if ($categoryQuery != null)
+                    <p>Category: <span id="queryVariable">{{ $categoryQuery }}</span></p>
+                @endif
+                <a href="/home" id="clear-filters">Clear filters</a>
+            </div>
+        </div>
+    @endif
 </div>
+
+
 <div class="background">
     <h1 style="font-size: 50; text-align: center;">Explore recipes</h1>
     @can('isAdmin')
