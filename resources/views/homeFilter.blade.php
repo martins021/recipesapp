@@ -18,8 +18,7 @@
             <input type="text" placeholder="Time" name="prepTime" id="time">
             <input type="text" placeholder="Ingredients" name="ingredients" id="ingredients">
             <select name="category" id="category" aria-placeholder="Category"> 
-                <option value="" disabled selected hidden>Category</option>
-                <option value=" "></option>            
+                <option value="" disabled selected hidden>Category</option>         
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}"> {{ $category->categoryName }}</option>
                 @endforeach

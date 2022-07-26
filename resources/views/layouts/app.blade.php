@@ -15,9 +15,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('css/home.css?v=).time()') }}" rel="stylesheet"> --}}
-    <link href="{{ asset('css/showRecipe.css?v=).time()') }}" rel="stylesheet">
-    <link href="{{ asset('css/welcome.css?v=).time()') }}" rel="stylesheet">
 
     <style>
         /* HOME */
@@ -26,6 +23,10 @@ body{
   padding-left: 15%;
 }
 a {
+  text-decoration: none; /* no underline */
+  color: inherit;
+}
+a:hover {
   text-decoration: none; /* no underline */
   color: inherit;
 }
@@ -189,6 +190,140 @@ input[type=submit]{
 }
 .form-create-new-recipe{
     float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SHOW RECIPE */
+
+
+body{
+    padding-right: 15%;
+    padding-left: 15%;
+}
+a {
+  text-decoration: none; /* no underline */
+  color: inherit;
+}
+h1{
+    color: blueviolet;
+}
+.background{
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.show-container{
+    display: grid;
+    grid-template-columns: 25% 25% auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+    gap: 10px;
+    background-color: white;
+    padding: 20px 30px 0 30px;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4 );
+    margin-bottom: 20px;
+}
+.show-image{
+    grid-column: 1/3;
+    grid-row: 2/6;
+ }
+.show-image > img{
+    max-height: 400px;
+    object-fit: cover;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.show-title{
+    margin-top: 20px;
+    grid-column: 1/5;
+    grid-row: 1/2;
+}
+.show-description{
+    padding: 10px;
+    grid-column: 3/5;
+    grid-row: 2/6;
+    font-size: 18px;
+}
+.show-ingredients{
+    grid-column: 3/5;
+    grid-row: 6/9;
+    font-size: 18px;
+}
+.show-preptime{
+    font-weight: bold;
+    text-align: right;
+    grid-column: 3/5;
+    grid-row: 9/10;
+    font-size: 20px;
+}
+.show-categories{
+    padding: 10px;
+    grid-column: 1/3;
+    grid-row: 6/11;
+}
+.show-likes{
+    grid-column: 4/5;
+    grid-row: 10/11;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    color: red;
+}
+.show-categories-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.show-categories-item{
+    font-size: 18px;
+    padding: 5px;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+    transition: 0.3s ease-out;
+}
+.show-categories-item:hover{
+    font-size: 18px;
+    padding: 5px;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+    background-color: blueviolet;
+    color: white;
+}
+
+.comment-container{
+    background-color: white;
+    padding: 20px 30px 0 30px;
+    padding-bottom: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4 );
+    margin-bottom: 20px;
+}
+.write-comment{
+    padding-bottom: 20px;
+}
+.comment-title{
+    width: 100%;
+}
+.comment-info{
+    float: left;
+    margin-right: 5px;
+    background: blueviolet;
+    padding: 2px;
+    color: white;
+    border-radius: 5px;
 }
 
 
@@ -373,6 +508,22 @@ input[type=submit]{
 .form-create-new-recipe{
     float: left;
 }
+
+
+
+
+/* footer {
+    width: 100%;
+    text-align: center;
+    min-height: 180px;
+    background: rgb(0, 8, 92);
+    color: white;
+    text-transform: capitalize;
+    font-size: 22px;
+    padding-top: 80px;
+} */
+
+
     </style>
 
 </head>
@@ -435,24 +586,19 @@ input[type=submit]{
         <main class="py-4">
             @yield('content')
         </main>
+
+        {{-- <footer>
+            <p>
+              copyright &copy; MM
+              <span id="date"></span>. all rights reserved
+            </p>
+        </footer> --}}
+
     </div>
 
     <script>
-        const largeBtn = document.querySelector(".open-search");
-        const searchForm = document.querySelector(".search");
-
-        window.addEventListener("DOMContentLoaded", function () {
-            searchForm.style.display = "none";
-        });
-
-        largeBtn.addEventListener('click', function(){
-            console.log(searchForm.style.display); 
-            if(searchForm.style.display == "none"){
-                searchForm.style.display = "block";
-            } else {
-                searchForm.style.display = "none";
-            }
-        });
+        const date = document.querySelector("#date");
+        date.innerHTML = new Date().getFullYear();
     </script>
 </body>
 </html>

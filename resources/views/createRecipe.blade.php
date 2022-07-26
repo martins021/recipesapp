@@ -47,7 +47,34 @@
                 <div class="row mb-3">
                     <label for="ingredients" class="col-md-4 col-form-label">Ingredients</label>
 
-                    <input id="ingredients"
+                    {{-- @foreach ($ingredients as $ingredient)
+                        <ul>
+                            <li>{{$ingredient}}</li>
+                        </ul>
+                    @endforeach --}}
+
+                    <table>
+                        @foreach ($ingredients as $ingredient)
+                            <tr>
+                                <td>
+                                    <input id="{{ $ingredient->id }}"
+                                           type="checkbox"
+                                           class="ingredient-enable">
+                                </td>
+                                <td>{{ $ingredient->ingredientName }}</td>
+                                <td>
+                                    <input type="text"
+                                           id="{{ $ingredient->id }}"
+                                           name="ingredients[{{ $ingredient->id }}]"
+                                           class="ingredient-amount form-control"
+                                           placeholder="Amount"
+                                           disabled>
+                                </td> 
+                            </tr>
+                        @endforeach
+                    </table>
+
+                    {{-- <input id="ingredients"
                         type="text"
                         class="form-control @error('ingredients') is-invalid @enderror"
                         name="ingredients" 
@@ -58,7 +85,7 @@
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
+                    @enderror --}}
                 </div>
 
                 <div class="row mb-3">
@@ -105,4 +132,12 @@
         <button class="btn btn-primary p-2 col-8 offset-2">Upload recipe</button>
     </form>
 </div>
+
+    <script>
+        const ingredient = document.getElementsByClassName("ingredient-enable");
+        ingredient.addEventListener('click', function(){
+            let id = 
+        });
+    </script>
+
 @endsection

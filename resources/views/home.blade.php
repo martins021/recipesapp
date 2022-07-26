@@ -17,8 +17,7 @@
             <input type="text" placeholder="Time" name="prepTime" id="time">
             <input type="text" placeholder="Ingredients" name="ingredients" id="ingredients">       
             <select name="category" id="category" aria-placeholder="Category"> 
-                <option value="" disabled selected hidden>Category</option>
-                <option value=" "></option>            
+                <option value="" disabled selected hidden>Category</option>           
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}"> {{ $category->categoryName }}</option>
                 @endforeach
@@ -114,4 +113,25 @@
         <p style="text-align: center;">No recipes found :(</p>
     @endif
 </div>
+
+<script>
+    const largeBtn = document.querySelector(".open-search");
+    const searchForm = document.querySelector(".search");
+
+    window.addEventListener("DOMContentLoaded", function () {
+        searchForm.style.display = "none";
+    });
+
+    largeBtn.addEventListener('click', function(){
+        console.log(searchForm.style.display); 
+        if(searchForm.style.display == "none"){
+            searchForm.style.display = "block";
+        } else {
+            searchForm.style.display = "none";
+        }
+    });
+    // console.log("hello");
+    // const date = document.querySelector("#date");
+    // console.log(new Date().getFullYear());
+</script>
 @endsection

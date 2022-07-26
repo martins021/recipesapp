@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Http\Controllers\CategoryController;
+use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\DB; // pievienots
@@ -16,8 +17,10 @@ class RecipesController extends Controller
 
     public function create(){
         $categories = Category::all();
+        $ingredients = Ingredient::all();
         return view('createRecipe', [ // atgriež createRecipe lapu
             'categories' => $categories,
+            'ingredients' => $ingredients,
         ]);
     }
 

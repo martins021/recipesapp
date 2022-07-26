@@ -169,6 +169,16 @@ img {
         text-align: center;
         font-size: 20px;
     }
+    footer {
+    width: 100%;
+    text-align: center;
+    min-height: 180px;
+    background: rgb(0, 8, 92);
+    color: white;
+    text-transform: capitalize;
+    font-size: 22px;
+    padding-top: 80px;
+}
     </style>
     <body>
         <header id="home">
@@ -230,6 +240,12 @@ img {
                 <h2>Ongoing projects</h2>
             </div>
         </section>
-
+        
+        <footer>
+            <p>
+              copyright &copy; MM
+              <span id="date"></span>. all rights reserved
+            </p>
+        </footer>
     </body>
 </html>
