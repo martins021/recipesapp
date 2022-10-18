@@ -65,10 +65,10 @@
                             @can('isLoggedIn')
                                 <form action="recipe/like/{{ $recipe->id }}" method="GET">
                                     @csrf
-                                    <button type="submit" class="btn btn-outline-primary">
+                                    <button type="submit" class="btn btn-outline-primary">     
                                         Like
                                     </button>
-                                </form>
+                                </form> 
                             @endcan
                         </div>
                             
@@ -130,8 +130,5 @@
             searchForm.style.display = "none";
         }
     });
-    // console.log("hello");
-    // const date = document.querySelector("#date");
-    // console.log(new Date().getFullYear());
 </script>
 @endsection
