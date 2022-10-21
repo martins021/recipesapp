@@ -37,3 +37,5 @@ Route::get('/recipe/{recipe}/show', [App\Http\Controllers\CommentsController::cl
 Route::post('/w/{recipe}', [App\Http\Controllers\CommentsController::class, 'store']); // saglabā komentāru
 
 Route::get('home/filter', [App\Http\Controllers\HomeController::class, 'filter'])->name('search');
+
+Route::post('/a', [App\Http\Controllers\IngredientsController::class, 'store']);
