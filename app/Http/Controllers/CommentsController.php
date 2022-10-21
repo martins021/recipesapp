@@ -13,7 +13,9 @@ class CommentsController extends Controller
     public function showRecipe($id){
         $recipe = Recipe::find($id);
         $categories = Recipe::with('categories')->get();
-        $comments = Comment::all();
+        $comments = DB::table('comments')
+            ->orderBy('created_at', 'desc')
+            ->get();
         $users = User::all();
         $likes = Recipe::withCount('likedBy')->get();
         return view('showRecipe', [

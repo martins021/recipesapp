@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<link href="{{ asset('css/showRecipe.css') }}" rel="stylesheet">
 @section('content')
 <title>{{$recipe->title}}</title>
 
@@ -46,7 +46,7 @@
 </div>
 
 <div class="comment-container">
-    <h3><strong>Comments</strong></h3>
+    <h3 style="margin-bottom: 50px"><strong>Comments</strong></h3>
     {{-- WRITE COMMENT --}}
     @can('isLoggedIn')
         <div class="write-comment">
@@ -77,11 +77,19 @@
                 @if ($comment->recipe_id == $recipe->id)
                     @foreach ($users as $user)
                         @if ($user->id == $comment->user_id)
-                            <div class="comment-title">
-                                <h5 class="comment-info">{{ $user->name }}</h5>
-                                <p>at {{ $comment->created_at }}</p>
+                            <div class="single-comment-container">
+                                <div class="single-comment-item-user">
+                                    <div class="comment-title">
+                                        <h5 class="comment-info">{{ $user->name }}</h5>
+                                    </div>
+                                </div>
+                                <div class="single-comment-item">
+                                    <p id="comment-time">at {{ $comment->created_at }}</p>
+                                </div>
+                                <div class="single-comment-item">
+                                    <p id="comment-content">{{ $comment->content }}</p>
+                                </div>
                             </div>
-                            <p>{{ $comment->content }}</p>
                         @endif
                     @endforeach
                     <hr>

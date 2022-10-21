@@ -15,9 +15,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/showRecipe.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/homeFilter.css') }}" rel="stylesheet">
 </head>
 <style>
     html, body {
@@ -35,7 +32,6 @@
         border-radius: 5px;
         padding: 2px 5px 2px 5px;
         margin-left: 10px;
-        font-weight: bold;
         color: white;
         transition: .4s ease-out;
         border: 1px solid black;

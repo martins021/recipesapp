@@ -29,6 +29,7 @@ body{
       padding: 0 5% 0 5%;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
       transition: 0.3s ease-in;
+      margin-bottom: 20px;
   }
   .open-search:hover{
       width: 100%;
@@ -48,7 +49,6 @@ body{
   .search{
       display: none;
       background-color: white;
-      padding-top: 20px;
       padding-bottom: 20px;
       box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
       margin-bottom: 25px;
@@ -97,7 +97,7 @@ body{
       cursor: pointer;
       gap: 3px;
       align-items: start;
-      transition: all .4s ease;
+      transition: all .1s ease;
   }
   .container-item:hover {
       box-shadow: 5px 5px 10px rgb(138, 43, 226, .3);

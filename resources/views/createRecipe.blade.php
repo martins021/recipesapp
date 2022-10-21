@@ -56,7 +56,7 @@
                     <table>
                         @foreach ($ingredients as $ingredient)
                             <tr>
-                                <td>
+                                <td class="ingredient-row">
                                     <input id="{{ $ingredient->id }}"
                                            type="checkbox"
                                            class="ingredient-enable">
@@ -64,8 +64,7 @@
                                 <td>{{ $ingredient->ingredientName }}</td>
                                 <td>
                                     <input type="text"
-                                           id="{{ $ingredient->id }}"
-                                           name="ingredients[{{ $ingredient->id }}]"
+                                           id="ingredients[{{ $ingredient->id }}]"
                                            class="ingredient-amount form-control"
                                            placeholder="Amount"
                                            disabled>
@@ -74,18 +73,25 @@
                         @endforeach
                     </table>
 
-                    {{-- <input id="ingredients"
-                        type="text"
-                        class="form-control @error('ingredients') is-invalid @enderror"
-                        name="ingredients" 
-                        value="{{ old('ingredients') }}" 
-                        autocomplete="ingredients" autofocus>
-
-                    @error('ingredients')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror --}}
+                    <div class="mb-3">
+                        <label for="ingredient" class="col-md-4 col-form-label">Add a new ingredient</label>
+    
+                        <input id="ingredient"
+                            type="text"
+                            class="form-control @error('ingredient') is-invalid @enderror"
+                            name="ingredient" 
+                            value="{{ old('ingredient') }}"
+                            style="width: 30%"
+                            autocomplete="ingredient" autofocus> <!-- old('title') nozīmē, ja ir input kļūda, tad rakstot vēlreiz iepriekš ierakstītais saglabāsies -->
+    
+                        @error('ingredient')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        
+                        <button class="btn btn-primary p-1 col-1 mt-2">Add</button>
+                    </div>
                 </div>
 
                 <div class="row mb-3">
@@ -134,10 +140,40 @@
 </div>
 
     <script>
-        const ingredient = document.getElementsByClassName("ingredient-enable");
-        ingredient.addEventListener('click', function(){
-            let id = 
-        });
+
+        var ingredients = document.getElementsByClassName("ingredient-row"); // gets html collection
+
+        for(let ingredient of ingredients){ 
+
+            ingredient.addEventListener('click', function(){ // adds click listener to each row
+                let ingredient_checkbox = ingredient.children[0]; // accesses checkbox of each element (1st child)
+                let amountField = document.getElementById(`ingredients[${ingredient_checkbox.id}]`); // gets input field by name and enables it
+
+                if(ingredient_checkbox.checked){
+                    amountField.disabled = true;
+                    ingredient_checkbox.checked = false;
+                }else{
+                    amountField.disabled = false;
+                    ingredient_checkbox.checked = true;
+                }
+            });
+        }
+        // same exact loop but click event is set to checkbox itself instead of parent element (otherwise checkbox doesn't work)
+        for(let ingredient of ingredients){ 
+            let ingredient_checkbox = ingredient.children[0]; // accesses checkbox of each element (1st child)
+            ingredient_checkbox.addEventListener('click', function(){ // adds click listener to each row
+                let amountField = document.getElementById(`ingredients[${ingredient_checkbox.id}]`); // gets input field by name and enables it
+
+                if(ingredient_checkbox.checked){
+                    amountField.disabled = true;
+                    ingredient_checkbox.checked = false;
+                }else{
+                    amountField.disabled = false;
+                    ingredient_checkbox.checked = true;
+                }
+            });
+        }
+
     </script>
 
 @endsection
